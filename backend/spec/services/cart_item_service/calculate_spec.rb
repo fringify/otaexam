@@ -101,8 +101,6 @@ RSpec.describe CartItemService::Calculate, type: :service do
           end
         end
       end
-
-
     end
 
     context 'product has multiple discount rule' do

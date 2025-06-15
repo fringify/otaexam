@@ -9,7 +9,10 @@ module CartItemService
     end
 
     def call
-      (quantity_for_calculation * calculated_price_basis).to_i
+      amount = (quantity_for_calculation * calculated_price_basis).to_i
+      cart_item.update_column(:price_in_cents, amount)
+      
+      amount
     end
 
     private
