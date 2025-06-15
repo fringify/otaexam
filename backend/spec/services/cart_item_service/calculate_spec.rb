@@ -10,12 +10,12 @@ RSpec.describe CartItemService::Calculate, type: :service do
         let(:cart_item) { create(:cart_item, product: product, quantity: 21) }
 
         before do
-          create(:buy_x_get_y_rule, buy: buy_count, get: get_count, product: product)
+          create(:buy_x_get_y_rule, buy_count: buy_count, free_count: free_count, product: product)
         end
 
         context 'buy 1 get 1' do
           let(:buy_count) { 1 }
-          let(:get_count) { 1 }
+          let(:free_count) { 1 }
 
           it 'should return expected amount' do
             # 21 products, 10 free . 11 x 311 
@@ -25,7 +25,7 @@ RSpec.describe CartItemService::Calculate, type: :service do
 
         context 'buy 2 get 1' do
           let(:buy_count) { 2 }
-          let(:get_count) { 1 }
+          let(:free_count) { 1 }
 
           it 'should return expected amount' do
             # 21 products, 7 free. 14 x 311
@@ -35,7 +35,7 @@ RSpec.describe CartItemService::Calculate, type: :service do
 
         context 'buy 3 get 2' do
           let(:buy_count) { 3 }
-          let(:get_count) { 2 }
+          let(:free_count) { 2 }
 
           it 'should return expected amount' do
             # 21 products, 8 free. 13 x 311
@@ -45,7 +45,7 @@ RSpec.describe CartItemService::Calculate, type: :service do
 
         context 'buy 10 get 2' do
           let(:buy_count) { 10 }
-          let(:get_count) { 2 }
+          let(:free_count) { 2 }
 
           it 'should return expected amount' do
             # 21 products, 2 free. 19 x 311
