@@ -19,7 +19,7 @@ RSpec.describe CartItemService::Calculate, type: :service do
 
           it 'should return expected amount' do
             # 21 products, 10 free . 11 x 311 
-            expect(subject.call).to eq(3421)
+            expect(subject).to eq(3421)
           end
         end
 
@@ -29,7 +29,7 @@ RSpec.describe CartItemService::Calculate, type: :service do
 
           it 'should return expected amount' do
             # 21 products, 7 free. 14 x 311
-            expect(subject.call).to eq(4354)
+            expect(subject).to eq(4354)
           end
         end
 
@@ -39,7 +39,7 @@ RSpec.describe CartItemService::Calculate, type: :service do
 
           it 'should return expected amount' do
             # 21 products, 8 free. 13 x 311
-            expect(subject.call).to eq(4043)
+            expect(subject).to eq(4043)
           end
         end
 
@@ -49,7 +49,7 @@ RSpec.describe CartItemService::Calculate, type: :service do
 
           it 'should return expected amount' do
             # 21 products, 2 free. 19 x 311
-            expect(subject.call).to eq(5909)
+            expect(subject).to eq(5909)
           end
         end
       end
@@ -69,7 +69,7 @@ RSpec.describe CartItemService::Calculate, type: :service do
 
             it 'should return expected amount' do
               # 3 products, no discount. 3 x 500
-              expect(subject.call).to eq(1500)
+              expect(subject).to eq(1500)
             end
           end
 
@@ -78,7 +78,7 @@ RSpec.describe CartItemService::Calculate, type: :service do
 
             it 'should return expected amount' do
               # 7 products, should use new price. 7 x 400
-              expect(subject.call).to eq(2800)
+              expect(subject).to eq(2800)
             end
           end
         end
@@ -96,7 +96,7 @@ RSpec.describe CartItemService::Calculate, type: :service do
 
             it 'should return expected amount' do
               # 3 products, no discount. 3 x 500
-              expect(subject.call).to eq(1500)
+              expect(subject).to eq(1500)
             end
           end
 
@@ -105,7 +105,7 @@ RSpec.describe CartItemService::Calculate, type: :service do
 
             it 'should return expected amount' do
               # 7 products, should use (7 x 500) * 0.66
-              expect(subject.call).to eq(2310)
+              expect(subject).to eq(2310)
             end
           end
         end
