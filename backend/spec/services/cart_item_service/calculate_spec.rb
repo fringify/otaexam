@@ -1,0 +1,18 @@
+require 'rails_helper'
+
+RSpec.describe CartItemService::Calculate, type: :service do
+  describe '#call' do
+    subject { described_class.new(cart_item).call }
+
+    context 'product has buy X get Y' do
+    end
+
+    context 'product is discounted when bulk' do
+      context 'discount is percentage based' do
+      end
+
+      context 'disocunt is amount specific based' do
+      end
+    end
+  end
+end
