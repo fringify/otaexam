@@ -116,6 +116,54 @@ RSpec.describe CartItemService::Calculate, type: :service do
 
     context 'product has multiple discount rule' do
       context 'combination of buy X get Y and percentage based' do
+        let(:product) { create(:product, name: 'Green Tea', price_in_cents: 311) }
+        let(:cart_item) { create(:cart_item, product: product, quantity: 21) }
+
+        before do
+          create(:buy_x_get_y_rule, buy_count: buy_count, free_count: free_count, product: product)
+          create(:percentage_based_rule, minimum: 5, percentage: 0.66, product: product)
+        end
+
+        context 'buy 1 get 1' do
+          let(:buy_count) { 1 }
+          let(:free_count) { 1 }
+
+          it 'should return expected amount' do
+            # 21 products, 10 free . 11 x (311 * 0.66)
+            expect(subject).to eq(2257)
+          end
+        end
+
+        context 'buy 2 get 1' do
+          let(:buy_count) { 2 }
+          let(:free_count) { 1 }
+
+          it 'should return expected amount' do
+            # 21 products, 7 free. 14 x (311 * 0.66)
+            expect(subject).to eq(2873)
+          end
+        end
+
+        context 'buy 3 get 2' do
+          let(:buy_count) { 3 }
+          let(:free_count) { 2 }
+
+          it 'should return expected amount' do
+            # 21 products, 8 free. 13 x (311 * 0.66)
+            expect(subject).to eq(2668)
+          end
+        end
+
+        context 'buy 10 get 2' do
+          let(:buy_count) { 10 }
+          let(:free_count) { 2 }
+
+          it 'should return expected amount' do
+            # 21 products, 2 free. 19 x (311 * 0.66)
+            expect(subject).to eq(3899)
+          end
+        end
+
       end
 
       context 'combination of buy X get Y and amount specific' do

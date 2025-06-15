@@ -9,7 +9,7 @@ module CartItemService
     end
 
     def call
-      quantity_for_calculation * calculated_price_basis
+      (quantity_for_calculation * calculated_price_basis).to_i
     end
 
     private
