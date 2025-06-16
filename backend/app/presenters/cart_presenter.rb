@@ -8,7 +8,7 @@ class CartPresenter
   def call
     {
       items: items,
-      total: cart.cart_items.sum(:price_in_cents)
+      total_price_in_cents: cart.cart_items.sum(:price_in_cents)
     }
   end
 
