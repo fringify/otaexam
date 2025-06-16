@@ -1,5 +1,5 @@
 class CartItemsController < ApplicationController
-  before_filter :load_cart
+  before_action :load_cart
 
   def create
     CartItemService::Add.new(product_id).call

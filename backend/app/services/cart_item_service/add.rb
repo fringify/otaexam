@@ -21,7 +21,7 @@ module CartItemService
     private
 
     def cart_item
-      @cart_item ||= @cart.cart_items.find_or_initialize_by(product_id: product_id)
+      @cart_item ||= cart.cart_items.find_or_initialize_by(product_id: product_id)
     end
 
     def cart

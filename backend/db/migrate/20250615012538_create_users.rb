@@ -4,7 +4,5 @@ class CreateUsers < ActiveRecord::Migration[7.1]
       t.string :name
       t.timestamps
     end
-
-    User.create!(name: 'Dan Rey Oquindo')
   end
 end
